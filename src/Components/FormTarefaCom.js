@@ -19,31 +19,38 @@ function FormTarefa() {
     })
 
     const handleChange = e => {
-        // setInput(e.target.value);
-        const {name, value} = e.target;
+        const { name, value } = e.target;
+
+        setValues({ ...values, [name]: value })
     };
 
-    const handleSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
+        
+    }
 
-        props.onSubmit({
-            id: Math.floor(Math.random() * 10000),
-            text: input
-        });
+    // const handleSubmit = e => {
+    //     e.preventDefault();
 
-        setInput('');
+    //     props.onSubmit({
+    //         id: Math.floor(Math.random() * 10000),
+    //         text: input
+    //     });
 
-    };
+    //     setInput('');
+
+    // };
 
 
     return (
-        <form className="form_tarefa" onSubmit={handleSubmit}>
-            {props.edit ? (
+        // <form className="form_tarefa" onSubmit={handleSubmit}>
+        <form className="form_tarefa" onSubmit={onSubmit}>
+            {/* {props.edit ? (
                 <>
                 <input
                     type="text"
                     placeholder="Titulo Tarefa"
-                    value={input}
+                    // value={input}
                     name="titulo"
                     className="inp_tarefa edit"
                     onChange={handleChange}
@@ -52,7 +59,7 @@ function FormTarefa() {
                 <input
                     type="text"
                     placeholder="Descrição Tarefa"
-                    value={input}
+                    // value={input}
                     name="descricao"
                     className="inp_tarefa edit"
                     onChange={handleChange}
@@ -61,20 +68,20 @@ function FormTarefa() {
                 <input
                     type="text"
                     placeholder="Data da Tarefa"
-                    value={input}
+                    // value={input}
                     name="data"
                     className="inp_tarefa edit"
                     onChange={handleChange}
                     ref={inputRef}
                 />
                 <button className="btn_tarefa edit" onClick={handleChange}>ATUALIZAR</button>
-                </>) :
-            (
-                <>
+                </>) : */}
+            {/* ( */}
+            <>
                 <input
                     type="text"
                     placeholder="Titulo Tarefa"
-                    value={input}
+                    value={values.titulo}
                     name="titulo"
                     className="inp_tarefa"
                     onChange={handleChange}
@@ -83,7 +90,7 @@ function FormTarefa() {
                 <input
                     type="text"
                     placeholder="Decrição Tarefa"
-                    value={input}
+                    value={values.descricao}
                     name="descricao"
                     className="inp_tarefa"
                     onChange={handleChange}
@@ -92,15 +99,15 @@ function FormTarefa() {
                 <input
                     type="text"
                     placeholder="Data da Tarefa"
-                    value={input}
+                    value={values.data}
                     name="data"
                     className="inp_tarefa"
                     onChange={handleChange}
                     ref={inputRef}
                 />
                 <button className="btn_tarefa">ADICIONAR</button>
-                </>
-            )}
+            </>
+            {/* )} */}
 
 
         </form>
