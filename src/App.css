@@ -26,10 +26,21 @@
     padding-bottom: 32px;
   }
 
+  label {
+    color: #fff;
+    font-size: 20px;
+  }
+
   h1 {
     margin: 32px 0;
     color: #fff;
     font-size: 24px;
+  }
+
+  .titulo{
+    margin: 16px 0;
+    color: #fff;
+    font-size: 30px;
   }
 
   .complete {
@@ -38,6 +49,11 @@
   }
 
   .form_tarefa {
+    margin-bottom: 32px;
+  }
+
+  .form_login {
+    margin-top: 50px;
     margin-bottom: 32px;
   }
 
@@ -51,7 +67,38 @@
     color: #fff;
   }
 
+  .inp_usuario {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #ff6713;
+    outline: none;
+    width: 30rem;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    background: transparent;
+    color: #fff;
+  }
+
+  .inp_senha {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #ff6713;
+    outline: none;
+    width: 30rem;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    background: transparent;
+    color: #fff;
+  }
+
   .inp_tarefa::placeholder {
+    color: #e2e2e2;
+  }
+
+  .inp_usuario::placeholder {
+    color: #e2e2e2;
+  }
+  .inp_senha::placeholder {
     color: #e2e2e2;
   }
 
@@ -63,6 +110,21 @@
     outline: none;
     background: linear-gradient(
       90deg,
+      rgba(255, 118, 20, 1) 0%,
+      rgba(255, 84, 17, 1) 100%
+    );
+    color: #fff;
+    text-transform: capitalize;
+  }
+
+  .btn_login {
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(
+      45deg,
       rgba(255, 118, 20, 1) 0%,
       rgba(255, 84, 17, 1) 100%
     );
