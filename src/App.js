@@ -1,13 +1,17 @@
+import React from 'react';
+import { BrowserRouter, Router, Switch, Route, Redirect } from 'react-router-dom';
+import auth from './Auth';
+import Routes from './Routes';
+
 import './App.css';
-import FormTarefa from './Components/FormTarefa'
-import ListTarefa from './Components/ListTarefa'
-import Tarefa from './Components/Tarefa';
-import auth from './auth'
 
-import Routes from './routes';
 
-const App = () => <div className="App "><Routes /></div>;
+function App() {
+  return (
+    <div className="App">
+      <Routes />
+    </div>
+  );
+}
 
 export default App;
-
-

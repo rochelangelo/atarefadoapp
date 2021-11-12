@@ -1,14 +1,16 @@
-import axios from './Utils/axios';
+import api from './api';
 
 class Auth {
+
     signIn = (usuario, senha) => {
-        console.log("foi")
         return new Promise((resolve, reject) => {
-            axios
+            api
                 .post('/v1/login', { usuario, senha })
                 .then((response) => {
                     if (response.data.usuario) {
-                        this.setToken(response.data.token);
+                        let usuario = response.data.usuario.nome;
+                        let usuarioId = response.data.usuario.id;
+                        this.setToken(response.data.token, usuario, usuarioId);
                         resolve(response.data.usuario);
                     } else {
                         reject(response.data.error);
@@ -20,11 +22,10 @@ class Auth {
         });
     };
 
-    signIn = (nome, usuario, senha) => { };
 
     signInWithToken = () => {
         return new Promise((resolve, reject) => {
-            axios
+            api
                 .post('/v1/usuario')
                 .then((response) => {
                     if (response.data.user) {
@@ -43,17 +44,20 @@ class Auth {
         this.removeToken();
     };
 
-    setToken = (token) => {
-        if(token){
+    setToken = (token, usuario, usuarioId) => {
+        if (token) {
             localStorage.setItem('accessToken', token);
-            axios.defaults.headers.common.Authorization = 'Bearer ${token}';
-        }else{
+            localStorage.setItem('user', JSON.stringify({ name: usuario, id: usuarioId }));
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        } else {
             localStorage.removeItem('token');
-            delete axios.defaults.headers.common.Authorization;
+            delete api.defaults.headers.authorization;
         }
     };
 
     getToken = () => localStorage.getItem('accessToken');
+
+    getUser = () => JSON.parse(localStorage.getItem('user'));
 
     removeToken = () => localStorage.removeItem('accessToken');
 
